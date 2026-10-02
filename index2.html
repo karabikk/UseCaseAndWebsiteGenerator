@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload CSV</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              secondary: "#3a646f",
+              "on-secondary-fixed": "#001f26",
+              "inverse-primary": "#54d7f3",
+              "on-tertiary": "#ffffff",
+              "tertiary-container": "#e58d3e",
+              "primary-fixed-dim": "#54d7f3",
+              background: "#f5fafc",
+              "surface-dim": "#d5dbdd",
+              "on-secondary-fixed-variant": "#204d57",
+              "on-surface": "#171d1e",
+              "on-error-container": "#93000a",
+              surface: "#f5fafc",
+              "on-primary-fixed-variant": "#004e5b",
+              "tertiary-fixed": "#ffdcc3",
+              tertiary: "#914d00",
+              "surface-container-low": "#eff4f6",
+              "error-container": "#ffdad6",
+              "secondary-container": "#bbe7f3",
+              "on-tertiary-container": "#592d00",
+              "surface-container-high": "#e4e9eb",
+              "surface-container": "#e9eff1",
+              "surface-container-lowest": "#ffffff",
+              "on-error": "#ffffff",
+              "tertiary-fixed-dim": "#ffb77d",
+              "primary-fixed": "#a9edff",
+              "on-primary": "#ffffff",
+              "surface-bright": "#f5fafc",
+              "on-primary-container": "#003e49",
+              "on-surface-variant": "#3d494c",
+              "surface-tint": "#006879",
+              "secondary-fixed": "#beeaf6",
+              "on-primary-fixed": "#001f26",
+              "surface-container-highest": "#dee3e5",
+              "on-secondary-container": "#3e6973",
+              outline: "#6d797d",
+              "on-tertiary-fixed-variant": "#6e3900",
+              error: "#ba1a1a",
+              "on-background": "#171d1e",
+              "inverse-on-surface": "#ecf2f4",
+              "secondary-fixed-dim": "#a2ced9",
+              "on-tertiary": "#ffffff",
+              "surface-variant": "#dee3e5",
+              "primary-container": "#12b1cc",
+              "outline-variant": "#bcc9cd",
+              primary: "#006879"
+            },
+            borderRadius: {
+              DEFAULT: "0.125rem",
+              lg: "0.25rem",
+              xl: "0.5rem",
+              full: "0.75rem"
+            },
+            fontFamily: {
+              headline: ["Space Grotesk"],
+              body: ["Inter"],
+              label: ["Inter"],
+              mono: ["JetBrains Mono"]
+            }
+          }
+        }
+      };
+    </script>
+
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        vertical-align: middle;
+      }
+
+      .tonal-shift {
+        transition: background-color 0.2s ease;
+      }
+
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+    </style>
+</head>
+
+
+<body class="bg-background text-on-surface font-body selection:bg-primary-container/30">
+
+    <!-- HEADER -->
+    <header class="fixed top-0 z-50 flex h-16 w-full items-center justify-between bg-white/85 px-6 shadow-[0_5px_40px_rgba(114,120,122,0.08)] backdrop-blur-2xl">
+
+        <div class="flex items-center gap-8">
+            <span class="font-headline text-xl font-bold tracking-tight text-cyan-600">
+                Code Generation AI
+            </span>
+
+            <nav class="hidden h-full items-center gap-6 md:flex">
+                <a class="flex h-full items-center border-b-2 border-cyan-500 px-1 font-semibold text-cyan-600 transition-all duration-200" href="#">
+                    Workspace
+                </a>
+            </nav>
+        </div>
+
+    </header>
+
+
+    <!-- SIDEBAR -->
+    <aside class="tonal-shift fixed left-0 flex h-screen w-64 flex-col bg-slate-100 px-4 pb-6 pt-20">
+
+        <div class="mb-8 px-2"></div>
+
+        <button class="mb-6 flex w-full items-center justify-center gap-2 rounded-lg border border-cyan-100 bg-white py-3 text-sm font-semibold text-cyan-700 shadow-sm transition-all active:scale-[0.98] hover:shadow-md">
+            <span class="material-symbols-outlined text-sm">add</span>
+            New Workspace
+        </button>
+
+        <nav class="flex-1 space-y-1">
+
+            <a class="flex items-center gap-3 rounded-md px-3 py-2.5 text-slate-600 transition-all hover:bg-slate-200/50" href="#">
+                <span class="material-symbols-outlined">assignment</span>
+                <span class="text-sm font-medium">Requirements</span>
+            </a>
+
+            <a class="flex items-center gap-3 rounded-md bg-white px-3 py-2.5 text-cyan-600 shadow-sm transition-all" href="#">
+                <span class="material-symbols-outlined">code</span>
+                <span class="text-sm font-medium">Editor</span>
+            </a>
+
+            <a class="flex items-center gap-3 rounded-md px-3 py-2.5 text-slate-600 transition-all hover:bg-slate-200/50" href="/diagram">
+                <span class="material-symbols-outlined">schema</span>
+                <span class="text-sm font-medium">Diagrams</span>
+            </a>
+
+            <a class="flex items-center gap-3 rounded-md px-3 py-2.5 text-slate-600 transition-all hover:bg-slate-200/50"
+   href="/generated">
+    <span class="material-symbols-outlined">web</span>
+    <span class="text-sm font-medium">Generated App</span>
+</a>
+
+        </nav>
+
+        <div class="space-y-1 border-t border-slate-200 pt-6">
+
+            <a class="flex items-center gap-3 px-3 py-2 text-slate-500 transition-colors hover:text-cyan-600" href="#">
+            </a>
+
+            <a class="flex items-center gap-3 px-3 py-2 text-slate-500 transition-colors hover:text-cyan-600" href="#">
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="ml-64 pt-20 px-8">
+
+        <form action="/upload" method="POST" enctype="multipart/form-data" target="generatedPage">
+
+            <div class="group relative flex-1 rounded-xl border-b-2 border-transparent bg-surface-container-lowest p-4 transition-all focus-within:border-primary">
+
+                <button
+                    id="uploadButton"
+                    class="mb-3 rounded border border-black bg-white p-2 text-on-surface-variant hover:text-primary"
+                    type="button">
+                    Upload CSV
+                </button>
+
+                <input
+                    id="csvFile"
+                    name="csvfile"
+                    type="file"
+                    accept=".csv"
+                    hidden>
+
+                <textarea
+                    name="txtFile"
+                    class="h-40 w-full resize-none border border-black bg-transparent font-body text-sm leading-relaxed text-on-surface placeholder:text-outline-variant/60 focus:ring-0"
+                    placeholder="Paste functional requirements here..."></textarea>
+
+                <button
+                    id="submitBtn"
+                    type="submit"
+                    class="rounded bg-primary-container px-3 py-1.5 text-xs font-bold text-on-primary-container hover:brightness-110">
+                    Submit
+                </button>
+
+                <p id="upload-status">No CSV uploaded</p>
+
+            </div>
+
+        </form>
+
+
+        <div class="mt-8">
+
+            <label class="mb-2 block font-semibold">
+                Generated Application
+            </label>
+
+            <iframe
+                name="generatedPage"
+                id="generatedPage"
+                width="800"
+                height="600"
+                class="border-2 border-black">
+            </iframe>
+
+        </div>
+
+    </main>
+
+
+    <script>
+
+        const uploadButton = document.getElementById("uploadButton");
+        const csvFile = document.getElementById("csvFile");
+
+        uploadButton.addEventListener("click", () => {
+            csvFile.click();
+        });
+
+    </script>
+
+</body>
+</html>
